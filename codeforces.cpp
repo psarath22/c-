@@ -58,23 +58,22 @@ ll ncr(ll a, ll b, ll m = mod)
 }
 /*************************************************************************************/
 
-
 int main()
 {
     int t = 1;
     while (t--)
     {
-        ll n, k;
+        int n, k;
         cin >> n >> k;
-        vector<ll> dp(n + 1), ans(n + 1);
-        ll start = 0;
-        dp[0]=1;
+        vector<int> dp(n + 1), ans(n + 1);
+        int start = 0;
+        dp[0] = 1;
         while (start <= n)
         {
-            vector<ll> sum(k, 0);
+            vector<int> sum(k, 0);
             for (int i = start; i <= n; i++)
             {
-                ll cur = dp[i];
+                int cur = dp[i];
                 dp[i] = sum[i % k];
                 (sum[i % k] += cur) %= mod;
                 (ans[i] += dp[i]) %= mod;
@@ -82,8 +81,7 @@ int main()
             start += k;
             k++;
         }
-        for (int i = 1; i <= n; i++)
-        {
+        for (int i = 1; i <= n; i++){
             cout << ans[i] << " ";
         }
     }
